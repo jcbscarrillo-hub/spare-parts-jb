@@ -1,0 +1,43 @@
+/* Layout para empujar el footer siempre al fondo */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main.container {
+    flex: 1; /* Esto hace que el contenido principal ocupe todo el espacio sobrante */
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Garantiza que siempre esté abajo */
+}
+.btn-cat {
+    padding: 8px 16px;
+    background-color: #f3f4f6;
+    color: #374151;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-cat:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+/* Color amarillo únicamente para las categorías en el menú del header */
+.nav-links a.nav-categoria {
+    color: #facc15 !important;
+    font-weight: 600;
+}
+
+.nav-links a.nav-categoria:hover {
+    color: #eab308 !important;
+}
