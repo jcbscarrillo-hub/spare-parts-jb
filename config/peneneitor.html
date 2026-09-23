@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+</head>
+<body>
+
+  <h2>Registro de Usuario</h2>
+
+  <form>
+    <!-- Solo letras y números (sin espacios) -->
+    <label>Usuario:</label><br>
+    <input type="text" required pattern="[a-zA-Z0-9]+" placeholder="Ej: Juan99" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')">
+    <br><small>Ejemplo: Juan99 (Solo letras y números)</small><br><br>
+
+    <!-- Solo números, exactamente 10 dígitos -->
+    <label>Teléfono:</label><br>
+    <input type="tel" required pattern="[0-9]{10}" maxlength="10" placeholder="Ej: 3001234567" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <br><small>Ejemplo: 3001234567 (10 números)</small><br><br>
+
+    <!-- Correo válido -->
+    <label>Correo:</label><br>
+    <input type="email" required placeholder="ejemplo@correo.com">
+    <br><small>Ejemplo: usuario@correo.com</small><br><br>
+
+    <!-- Mínimo 8 caracteres, 1 Mayúscula, 1 Minúscula, 1 Número y 1 Especial -->
+    <label>Contraseña:</label><br>
+    <input type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}">
+    <br><small>Mínimo 8 caracteres (1 mayúscula, 1 minúscula, 1 número y 1 especial: @$!%*?&)</small><br><br>
+
+    <button type="submit">Registrarse</button>
+  </form>
+
+</body>
+</html>

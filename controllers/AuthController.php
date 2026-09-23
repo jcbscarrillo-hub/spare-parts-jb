@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'models/Usuario.php';
 
 class AuthController {
@@ -30,7 +33,15 @@ class AuthController {
                 $_SESSION['user_id'] = $user['id_usuario'];
                 $_SESSION['user_nombre'] = $user['nombre'];
                 $_SESSION['user_email'] = $user['email'];
-                $_SESSION['user_rol'] = $user['rol'];
+                
+                // Asignación robusta del rol para que reconozca el ID 1 como administrador
+                if (isset($user['id_rol']) && $user['id_rol'] == 1) {
+                    $_SESSION['rol'] = 'admin';
+                    $_SESSION['user_rol'] = 'admin';
+                } else {
+                    $_SESSION['rol'] = $user['rol'] ?? 'cliente';
+                    $_SESSION['user_rol'] = $user['rol'] ?? 'cliente';
+                }
 
                 header('Location: /spare-parts-jb/home');
                 exit;

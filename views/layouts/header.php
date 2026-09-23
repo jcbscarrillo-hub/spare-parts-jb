@@ -1,3 +1,10 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// Verificamos si el usuario es administrador (puedes ajustar 'rol' si en tu BD se llama diferente)
+$esAdmin = isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,6 +33,7 @@
             color: #ffffff !important;
             font-size: 1.35rem !important;
             font-weight: 800 !important;
+            text-xhtml-decoration: none !important;
             text-decoration: none !important;
         }
         .nav-links {
@@ -54,9 +62,14 @@
                 <a href="http://localhost/spare-parts-jb/home?categoria=1" style="color: #facc15; font-weight: bold;">Cascos</a>
                 <a href="http://localhost/spare-parts-jb/home?categoria=2" style="color: #facc15; font-weight: bold;">Accesorios</a>
                 <a href="http://localhost/spare-parts-jb/home?categoria=3" style="color: #facc15; font-weight: bold;">Repuestos</a>
-                <a href="http://localhost/spare-parts-jb/clientes" style="color: #facc15; font-weight: bold;">Admin Clientes</a>
-                <a href="http://localhost/spare-parts-jb/productos" style="color: #facc15; font-weight: bold; text-decoration: none;">Admin Productos</a>
-                <a href="http://localhost/spare-parts-jb/categorias" style="color: #facc15; font-weight: bold;">Admin Categorías</a>
+
+                <!-- Opciones exclusivas de Administrador -->
+                <?php if ($esAdmin): ?>
+                    <a href="http://localhost/spare-parts-jb/clientes" style="color: #facc15; font-weight: bold;">Admin Clientes</a>
+                    <a href="http://localhost/spare-parts-jb/productos" style="color: #facc15; font-weight: bold; text-decoration: none;">Admin Productos</a>
+                    <a href="http://localhost/spare-parts-jb/categorias" style="color: #facc15; font-weight: bold;">Admin Categorías</a>
+                <?php endif; ?>
+
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <span style="color: #ffffff;">Hola, <?= htmlspecialchars($_SESSION['user_nombre'] ?? 'Usuario') ?></span>
                     <a href="http://localhost/spare-parts-jb/auth/logout" style="color: #ffffff;">Cerrar Sesión</a>
@@ -69,3 +82,5 @@
             </nav>
         </div>
     </header>
+</body>
+</html>
