@@ -73,6 +73,14 @@ class AuthController {
                 return;
             }
 
+            // Validación de la contraseña con la expresión regular solicitada
+            $patronPassword = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/';
+            if (!preg_match($patronPassword, $password)) {
+                $error = "La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una minúscula y un número.";
+                require_once 'views/auth/registro.php';
+                return;
+            }
+
             if ($this->usuarioModel->emailExiste($email)) {
                 $error = "El correo ya está registrado.";
                 require_once 'views/auth/registro.php';

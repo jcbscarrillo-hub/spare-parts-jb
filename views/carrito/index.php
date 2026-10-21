@@ -50,7 +50,8 @@
             
             <div style="text-align: right;">
                 <h3 style="margin-bottom: 15px;">Total: <span style="color: #dc2626;">$<?= number_format($total, 2) ?></span></h3>
-                <a href="/spare-parts-jb/pedido/confirmar" class="btn" style="background-color: #dc2626; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Finalizar Compra</a>
+                <!-- <a href="/spare-parts-jb/carrito/finalizarCompra" class="btn" style="background-color: #dc2626; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Finalizar Compra</a> -->
+                <a href="/spare-parts-jb/carrito/finalizarCompra" style="background-color: #dc2626; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Finalizar Compra</a>                
             </div>
         </div>
 
