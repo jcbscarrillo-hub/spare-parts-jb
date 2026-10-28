@@ -13,7 +13,14 @@ if (!file_exists('config/database.php')) {
 require_once 'config/database.php';
 
 // 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
+// 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
+// 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
+// 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
+// 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
+// 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
+// 2. Procesar la URL limpiando los parámetros GET (?categoria=1)
 $urlRequest = isset($_GET['url']) ? $_GET['url'] : 'home';
+
 $urlClean = strtok($urlRequest, '?');
 $urlParams = explode('/', rtrim($urlClean, '/'));
 
